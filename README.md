@@ -6,9 +6,16 @@ The goal is to use Git in the most practical way, without the need to type funny
 
 Using this configuration, my personal account is used when I'm at any directory inside `~/`, except the ones I put a specific configuration file.
 
+### Install dependencies
+
+- To generate and manage the SSH keys.
+openssh
+- To copy the SSH key to clipboard.
+xclip
+
 ### Create and add keys to ssh-agent
 
-First of all, create a pair of ssh keys for each account. I named my main account keys with the default name, and the additional keys with a postfix to identify them. 
+Now create a pair of ssh keys for each account. I named my main account keys with the default name, and the additional keys with a postfix to identify them. 
 
 ``` bash
 $ mkdir ~/.ssh
@@ -34,12 +41,24 @@ $ ssh-add ~/.ssh/id_ed25519_work
 
 ### Add key to their respective accounts
 
-Copy the content of `~/.ssh/id_ed25519.pub` to clipboard, log in to the main github account, go to:
+Copy the content of `~/.ssh/id_ed25519.pub` to clipboard.
+
+``` bash
+$ cat id_ed25519.pub | xclip -selection clipboard
+```
+
+Log in to the main github account, go to:
 Settings > SSH and GPG keys > New SSH key
 
 In the title field type the hostname of the machine, paste the public key into the key field, and add the SSH key.
 
-Copy the content of `~/.ssh/id_ed25519_work.pub` to clipboard, log in to the related github account, go to:
+Copy the content of `~/.ssh/id_ed25519_work.pub` to clipboard.
+
+``` bash
+$ cat id_ed25519_work.pub | xclip -selection clipboard
+```
+
+Log in to the related github account, go to:
 Settings > SSH and GPG keys > New SSH key
 
 In the title field type the same hostname, paste the public key into the key field, and add the SSH key.
