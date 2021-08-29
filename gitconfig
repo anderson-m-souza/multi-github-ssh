@@ -1,0 +1,9 @@
+[user]
+    name = "Main Name"
+    email = "me@main.com"
+[core]
+    sshCommand = ssh -i ~/.ssh/id_ed25519 -F /dev/null
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
+[init]
+    defaultBranch = main
